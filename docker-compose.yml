@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  pothole-detector:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./results:/app/results
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+
+  # Optional: Add a simple web server for serving results
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./results:/usr/share/nginx/html/results
+    depends_on:
+      - pothole-detector
+    restart: unless-stopped
