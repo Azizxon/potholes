@@ -1,98 +1,39 @@
-# Pothole Detection System
+# Potholes Detection & Management System
 
-A free, custom AI-powered pothole detection system that uses computer vision techniques to identify potholes in road images.
+A comprehensive system for detecting, analyzing, and managing potholes using computer vision and data analytics.
 
-## Features
+## Architecture Overview
 
-- 🆓 **Free and Open Source**: No paid APIs or proprietary models required
-- 📱 **Mobile Compatible**: Works with images from mobile devices
-- 🖥️ **Web Interface**: Simple drag-and-drop interface for testing
-- 🔍 **Computer Vision**: Uses OpenCV and traditional CV techniques
-- 📊 **Detection Results**: Provides confidence scores and bounding boxes
-- 💾 **Data Storage**: Saves detection results for analysis
+This project is organized into four main modules:
 
-## How It Works
+### 🔍 [Data Collection Module](./data-collection/)
+Handles the collection of pothole-related data including images, GPS coordinates, and sensor data from various sources.
 
-The system uses a combination of computer vision techniques:
+### 🧠 [Detection & Analysis Module](./detection-analysis/)
+Processes collected data to detect and analyze potholes using computer vision and machine learning techniques.
 
-1. **Dark Region Detection**: Identifies dark areas that may be potholes
-2. **Edge Detection**: Uses Canny edge detection to find irregular shapes
-3. **Contour Analysis**: Analyzes shapes and sizes to filter potential potholes
-4. **Confidence Scoring**: Generates confidence scores based on darkness and size
+### 💾 [Database & Storage Module](./database-storage/)
+Manages persistent storage of pothole data, detection results, and provides data access layers.
 
-## Installation
+### 📊 [Reporting & Visualization Module](./reporting-visualization/)
+Provides user interfaces, dashboards, and visualizations for pothole data analysis and reporting.
 
-1. Clone the repository:
-```bash
-git clone https://github.com/Azizxon/potholes.git
-cd potholes
-```
+## Getting Started
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+Each module contains its own `.copilot-instructions.md` file with detailed guidelines for development, coding patterns, and best practices specific to that module.
 
-3. Run the application:
-```bash
-python app.py
-```
+## Development Guidelines
 
-4. Open your browser and go to `http://localhost:8000`
-
-## API Usage
-
-### Upload Image for Detection
-
-```bash
-curl -X POST "http://localhost:8000/detect-pothole" \
-     -H "accept: application/json" \
-     -H "Content-Type: multipart/form-data" \
-     -F "file=@your_image.jpg"
-```
-
-### Response Format
-
-```json
-{
-  "timestamp": "20231208_143052",
-  "filename": "road_image.jpg",
-  "potholes_detected": 2,
-  "confidence_scores": [0.75, 0.68],
-  "bounding_boxes": [[120, 200, 80, 60], [300, 150, 100, 70]]
-}
-```
-
-## Requirements
-
-- Python 3.7+
-- OpenCV
-- FastAPI
-- TensorFlow (for future ML enhancements)
-- PIL/Pillow
-- NumPy
-
-## Future Enhancements
-
-- [ ] Train a custom deep learning model for better accuracy
-- [ ] Add real-time video processing
-- [ ] Implement mobile app integration
-- [ ] Add GPS location tagging
-- [ ] Severity classification
-- [ ] Batch processing capabilities
+- Follow the coding patterns outlined in each module's Copilot instructions
+- Use async/await patterns for I/O operations
+- Implement comprehensive error handling and logging
+- Add proper type hints and documentation
+- Write tests for all new functionality
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Disclaimer
-
-This is a proof-of-concept implementation using computer vision techniques. For production use, consider training a custom deep learning model with a larger dataset for improved accuracy.
+When working on this project:
+1. Identify which module your changes belong to
+2. Read the relevant `.copilot-instructions.md` file
+3. Follow the established patterns and conventions
+4. Update documentation as needed
